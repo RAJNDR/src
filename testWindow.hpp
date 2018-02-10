@@ -2,24 +2,25 @@
 #define TESTWINDOW_HPP
 
 #include "SDL.h"
+#include <stdio.h>
 
 class testWindow
 {
     public:
         testWindow();
-        virtual ~testWindow();
-        void initWindow();
-        void loadMedia();
+        ~testWindow(){}
+        bool initWindow();
+        bool loadMedia();
         void close();
 
     private:
-        SDL_Window * window;
-        SDL_Surface * surface;
-        SDL_Surface * helloWorld;
+        SDL_Window * gwindow;
+        SDL_Surface * gsurface;
+        SDL_Surface * ghelloWorld;
 
         bool createdWindow;
-        const int SCREEN_WIDTH;
-        const int SCREEN_HEIGHT;
+        int SCREEN_WIDTH;
+        int SCREEN_HEIGHT;
 };
 
 #endif
