@@ -69,3 +69,31 @@ void testWindow::close()
     //Quit SDL subsystems
     SDL_Quit();
 }
+
+void testWindow::start()
+{
+     if( !initWindow() )
+    {
+        printf( "Failed to initialize!\n" );
+    }
+    else
+    {
+        //Load media
+        if( !loadMedia() )
+        {
+            printf( "Failed to load media!\n" );
+        }
+        else
+        {
+            //Apply the image
+            SDL_BlitSurface( ghelloWorld, NULL, gsurface, NULL );
+            //Update the surface
+            SDL_UpdateWindowSurface( gwindow );
+            //Wait two seconds
+            SDL_Delay( 10000 );
+        }
+    }
+
+    //Free resources and close SDL
+    close();
+}

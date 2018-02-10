@@ -12,6 +12,7 @@ class testWindow
         bool initWindow();
         bool loadMedia();
         void close();
+        void start();
 
     private:
         SDL_Window * gwindow;
