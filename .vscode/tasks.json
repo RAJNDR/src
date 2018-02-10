@@ -4,9 +4,9 @@
         {
             "label": "build hello world",
             "type": "shell",
-            "command": "g++",
+            "command": "mingw32-make",
             "args": [
-                "-g", "main.cpp"
+                "all"
             ],
             "group": {
                 "kind": "build",
