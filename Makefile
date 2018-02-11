@@ -43,8 +43,7 @@ $(ODIR)/%.o:  $(SRC)/%.cpp $(DEPS)
 all : $(OBJS)
 	$(CC) -o $(OBJ_NAME) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS)
 
-
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~
+	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~ main.exe
