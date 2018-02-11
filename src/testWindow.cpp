@@ -77,7 +77,8 @@ void testWindow::close()
 
 void testWindow::start()
 {
-     if( !initWindow() )
+    
+    if( !initWindow() )
     {
         printf( "Failed to initialize!\n" );
     }
@@ -90,15 +91,19 @@ void testWindow::start()
         }
         else
         {
-            //Apply the image
-            SDL_BlitSurface( ghelloWorld, NULL, gsurface, NULL );
-            //Update the surface
-            SDL_UpdateWindowSurface( gwindow );
-            //Wait two seconds
-            SDL_Delay( 10000 );
+            bool quit = false;
+            while(!quit){
+                while( SDL_PollEvent( &e ) != 0 ){
+					//User requests quit
+					if( e.type == SDL_QUIT ){
+						quit = true;
+					}
+				}
+                //Apply the image
+                SDL_BlitSurface( ghelloWorld, NULL, gsurface, NULL );
+                //Update the surface
+                SDL_UpdateWindowSurface( gwindow );
+            }
         }
     }
-
-    //Free resources and close SDL
-    //close();
 }

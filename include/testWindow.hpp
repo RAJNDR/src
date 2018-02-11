@@ -18,6 +18,7 @@ class testWindow
         SDL_Window * gwindow;
         SDL_Surface * gsurface;
         SDL_Surface * ghelloWorld;
+        SDL_Event e;
 
         bool createdWindow;
         int SCREEN_WIDTH;
