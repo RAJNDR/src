@@ -51,7 +51,8 @@
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/tr1",
                 "C:/MinGW/include",
                 "C:/mingw_dev_lib/include/SDL2",
-                "C:/MinGW/lib/gcc/mingw32/6.3.0/include"
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                "${workspaceRoot}/include"
             ],
             "defines": [
                 "_DEBUG",

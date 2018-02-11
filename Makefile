@@ -5,13 +5,18 @@
 #OBJS specifies which files to compile as part of the project
 #OBJS = main.cpp
 #dependencies
-DEPS = testWindow.hpp
+#DEPS = testWindow.hpp
 
 #CC specifies which compiler we're using
 CC = g++
+SRC = src
+ODIR = obj
+IDIR = include
 
+_DEPS = testWindow.hpp
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -IC:\mingw_dev_lib\include\SDL2
+INCLUDE_PATHS = -Iinclude -IC:\mingw_dev_lib\include\SDL2
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
 LIBRARY_PATHS = -LC:\mingw_dev_lib\lib
@@ -19,20 +24,27 @@ LIBRARY_PATHS = -LC:\mingw_dev_lib\lib
 #COMPILER_FLAGS specifies the additional compilation options we're using
 # -w suppresses all warnings
 # -Wl,-subsystem,windows gets rid of the console window
-#COMPILER_FLAGS = -w -Wl,-subsystem,windows
+COMPILER_FLAGS = -w -Wl,-subsystem,windows
 
 #LINKER_FLAGS specifies the libraries we're linking against
 LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
 
-OBJS = testWindow.o main.o
+_OBJ = testWindow.o main.o
+OBJS = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = main
 
 
-%.o: %.cpp $(DEPS)
+$(ODIR)/%.o:  $(SRC)/%.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(INCLUDE_PATHS) $(COMPILER_FLAGS) $(LIBRARY_PATHS)
 
 #This is the target that compiles our executable
 all : $(OBJS)
-	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+	$(CC) -o $(OBJ_NAME) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS)
 
+
+.PHONY: clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~

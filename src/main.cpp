@@ -8,11 +8,9 @@ and may not be redistributed without written permission.*/
 int main( int argc, char* args[] )
 {
 	printf("starting the window");
+	testWindow * iwindow = new testWindow;
+	iwindow->start();
 
-	testWindow iwindow;
-
-	iwindow.start();
-
-	
+	delete(iwindow);	
 	return 0;
 }

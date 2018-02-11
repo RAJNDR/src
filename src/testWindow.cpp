@@ -10,6 +10,11 @@ testWindow::testWindow()
     SCREEN_HEIGHT = 480;
 }
 
+testWindow::~testWindow()
+{
+    close();
+}
+
 bool testWindow::initWindow()
 {
         //Initialization flag
@@ -95,5 +100,5 @@ void testWindow::start()
     }
 
     //Free resources and close SDL
-    close();
+    //close();
 }

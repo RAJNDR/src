@@ -8,7 +8,7 @@ class testWindow
 {
     public:
         testWindow();
-        ~testWindow(){}
+        ~testWindow();
         bool initWindow();
         bool loadMedia();
         void close();
