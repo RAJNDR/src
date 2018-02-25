@@ -37,11 +37,11 @@ OBJ_NAME = main
 
 
 $(ODIR)/%.o:  $(SRC)/%.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(INCLUDE_PATHS) $(COMPILER_FLAGS) $(LIBRARY_PATHS)
+	$(CC) -g -c -o $@ $< $(INCLUDE_PATHS) $(COMPILER_FLAGS) $(LIBRARY_PATHS)
 
 #This is the target that compiles our executable
 all : $(OBJS)
-	$(CC) -o $(OBJ_NAME) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS)
+	$(CC) -g -o $(OBJ_NAME) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) $(LINKER_FLAGS)
 
 .PHONY: clean
 
